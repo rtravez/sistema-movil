@@ -12,9 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 /**
  * The persistent class for the usuarios database table.
  */
+
+@Data
 @Entity
 @Table(name = "usuarios")
 public class User implements Serializable {
@@ -37,63 +41,5 @@ public class User implements Serializable {
 	// bi-directional many-to-one association to RoleUser
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
 	private List<RoleUser> rolesUsers;
-
-	public User() {
-		super();
-	}
-
-	public Long getUsuarioId() {
-		return this.usuarioId;
-	}
-
-	public void setUsuarioId(Long usuarioId) {
-		this.usuarioId = usuarioId;
-	}
-
-	public Boolean getEnabled() {
-		return this.enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public String getPassword() {
-		return this.password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getUsername() {
-		return this.username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public RoleUser addRoleUser(RoleUser rolesUser) {
-		getRolesUsers().add(rolesUser);
-		rolesUser.setUser(this);
-
-		return rolesUser;
-	}
-
-	public RoleUser removeRoleUser(RoleUser rolesUsuario) {
-		getRolesUsers().remove(rolesUsuario);
-		rolesUsuario.setUser(null);
-
-		return rolesUsuario;
-	}
-
-	public List<RoleUser> getRolesUsers() {
-		return rolesUsers;
-	}
-
-	public void setRolesUsers(List<RoleUser> rolesUsers) {
-		this.rolesUsers = rolesUsers;
-	}
 
 }

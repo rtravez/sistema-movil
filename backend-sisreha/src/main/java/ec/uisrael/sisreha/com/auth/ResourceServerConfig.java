@@ -28,8 +28,8 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**").permitAll()
-				.antMatchers(HttpMethod.GET, "/api/tipos", "/api/marcas", "/api/modelos", "/api/autos").permitAll().antMatchers("/api/marcas/{tipo}", "/api/modelos/{marca}", "/api/autos/{placa}")
-				.permitAll().antMatchers("/api/tipos/**", "/api/marcas/**", "/api/modelos/**", "/api/autos/**").permitAll().anyRequest().authenticated().and().cors()
+				.antMatchers(HttpMethod.GET, "/api/users").permitAll().antMatchers("/api/user/{id}")
+				.permitAll().antMatchers("/api/users/**").permitAll().anyRequest().authenticated().and().cors()
 				.configurationSource(corsConfigurationSource());
 	}
 

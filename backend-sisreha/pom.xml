@@ -13,6 +13,7 @@
 	<artifactId>backend-sisreha</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>backend-sisreha</name>
+	<description>Proyecto moviles</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -98,7 +99,11 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>
-
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-collections4</artifactId>
@@ -142,5 +147,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<description>Resolución Hoy no circula</description>
 </project>

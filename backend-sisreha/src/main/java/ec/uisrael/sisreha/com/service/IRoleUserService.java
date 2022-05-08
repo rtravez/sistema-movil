@@ -1,10 +1,9 @@
 package ec.uisrael.sisreha.com.service;
 
 import java.io.Serializable;
-import java.util.Optional;
+import java.util.List;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
-
+import ec.uisrael.sisreha.com.entity.RoleUser;
 import ec.uisrael.sisreha.com.entity.User;
 import ec.uisrael.sisreha.com.exception.ExceptionManager;
 
@@ -14,7 +13,8 @@ import ec.uisrael.sisreha.com.exception.ExceptionManager;
  * @author renetravez
  * @version $1.0$
  */
-public interface IUserService extends IGenericService<User, Long>, UserDetailsService, Serializable {
+public interface IRoleUserService extends IGenericService<RoleUser, Long>, Serializable {
 
-	public Optional<User> findByUsername(String username) throws ExceptionManager;
+	public List<RoleUser> findByUser(User user) throws ExceptionManager;
+
 }

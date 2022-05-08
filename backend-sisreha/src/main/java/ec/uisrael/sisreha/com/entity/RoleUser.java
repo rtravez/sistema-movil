@@ -12,9 +12,12 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 /**
  * The persistent class for the roles_usuarios database table.
  */
+@Data
 @Entity
 @Table(name = "roles_usuarios")
 public class RoleUser implements Serializable {
@@ -37,41 +40,5 @@ public class RoleUser implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usuario_id", nullable = false)
 	private User user;
-
-	public RoleUser() {
-		super();
-	}
-
-	public Long getRolUsuarioId() {
-		return this.rolUsuarioId;
-	}
-
-	public void setRolUsuarioId(Long rolUsuarioId) {
-		this.rolUsuarioId = rolUsuarioId;
-	}
-
-	public Boolean getEstado() {
-		return this.estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-
-	public Role getRole() {
-		return this.role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 }

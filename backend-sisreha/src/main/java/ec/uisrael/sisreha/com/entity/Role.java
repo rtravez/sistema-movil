@@ -12,9 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 /**
  * The persistent class for the roles database table.
  */
+
+@Data
 @Entity
 @Table(name = "roles")
 public class Role implements Serializable {
@@ -34,54 +38,5 @@ public class Role implements Serializable {
 	// bi-directional many-to-one association to RolesUsuario
 	@OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
 	private List<RoleUser> rolesUsuarios;
-
-	public Role() {
-	}
-
-	public Long getRolId() {
-		return this.rolId;
-	}
-
-	public void setRolId(Long rolId) {
-		this.rolId = rolId;
-	}
-
-	public Boolean getEstado() {
-		return this.estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-
-	public String getNombre() {
-		return this.nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public List<RoleUser> getRolesUsuarios() {
-		return this.rolesUsuarios;
-	}
-
-	public void setRolesUsuarios(List<RoleUser> rolesUsuarios) {
-		this.rolesUsuarios = rolesUsuarios;
-	}
-
-	public RoleUser addRolesUsuario(RoleUser rolesUsuario) {
-		getRolesUsuarios().add(rolesUsuario);
-		rolesUsuario.setRole(this);
-
-		return rolesUsuario;
-	}
-
-	public RoleUser removeRolesUsuario(RoleUser rolesUsuario) {
-		getRolesUsuarios().remove(rolesUsuario);
-		rolesUsuario.setRole(null);
-
-		return rolesUsuario;
-	}
 
 }

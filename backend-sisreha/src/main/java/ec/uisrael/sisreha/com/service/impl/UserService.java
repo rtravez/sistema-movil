@@ -17,11 +17,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import ec.uisrael.sisreha.com.dao.IGenericDao;
 import ec.uisrael.sisreha.com.dao.IUserDao;
 import ec.uisrael.sisreha.com.exception.ExceptionManager;
 import ec.uisrael.sisreha.com.service.IUserService;
-
-
 
 /**
  * <b> Descripcion de la clase, interface o enumeracion. </b>
@@ -30,13 +29,21 @@ import ec.uisrael.sisreha.com.service.IUserService;
  * @version $1.0$
  */
 @Scope("singleton")
-@Service("UsuarioService")
+@Service("UserService")
 public class UserService extends GenericService<ec.uisrael.sisreha.com.entity.User, Long> implements IUserService {
 
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 	@Autowired
 	private IUserDao userDao;
+
+	public UserService() {
+	}
+
+	@Autowired
+	public UserService(IGenericDao<ec.uisrael.sisreha.com.entity.User, Long> genericDao) {
+		super(genericDao);
+	}
 
 	@Override
 	@Transactional(readOnly = true)
@@ -48,12 +55,14 @@ public class UserService extends GenericService<ec.uisrael.sisreha.com.entity.Us
 			throw new UsernameNotFoundException("Username: " + username + " no existe en el sistema!");
 		}
 
-		List<GrantedAuthority> authorities = user.getRolesUsers().stream().map(role -> new SimpleGrantedAuthority(role.getRole().getNombre()))
+		List<GrantedAuthority> authorities = user.getRolesUsers().stream()
+				.map(role -> new SimpleGrantedAuthority(role.getRole().getNombre()))
 				.peek(authority -> LOG.info("Role ".concat(authority.getAuthority()))).collect(Collectors.toList());
 
 		if (authorities.isEmpty()) {
 			LOG.error("Error en el Login: Usuario " + username + " no tiene roles asignados!");
-			throw new UsernameNotFoundException("Error en el Login: usuario " + username + " no tiene roles asignados!");
+			throw new UsernameNotFoundException(
+					"Error en el Login: usuario " + username + " no tiene roles asignados!");
 		}
 		return new User(user.getUsername(), user.getPassword(), user.getEnabled(), true, true, true, authorities);
 	}
