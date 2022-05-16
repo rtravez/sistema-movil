@@ -3,7 +3,6 @@ package ec.uisrael.sisreha.com.mapper;
 import java.util.List;
 
 import org.mapstruct.Mapper;
-import org.mapstruct.ReportingPolicy;
 import org.mapstruct.factory.Mappers;
 
 import ec.uisrael.sisreha.com.dto.UserDto;
@@ -15,7 +14,7 @@ import ec.uisrael.sisreha.com.entity.User;
  * @author renetravez
  * @version $1.0$
  */
-@Mapper(implementationName = "UserMapper", implementationPackage = "<PACKAGE_NAME>.impl", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(implementationName = "UserMapper", implementationPackage = "<PACKAGE_NAME>.impl")
 public interface IUserMapper {
 
 	IUserMapper INSTANCE = Mappers.getMapper(IUserMapper.class);

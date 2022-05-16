@@ -29,7 +29,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/v2/api-docs", "/configuration/ui", "/swagger-resources/**", "/configuration/security", "/swagger-ui.html", "/webjars/**").permitAll()
 				.antMatchers(HttpMethod.GET, "/api/users").permitAll().antMatchers("/api/user/{id}")
-				.permitAll().antMatchers("/api/users/**").permitAll().anyRequest().authenticated().and().cors()
+				.permitAll().antMatchers("/api/users/**").permitAll().anyRequest().permitAll().and().cors()
 				.configurationSource(corsConfigurationSource());
 	}
 

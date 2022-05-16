@@ -16,7 +16,7 @@
 	<description>Proyecto moviles</description>
 
 	<properties>
-		<java.version>11</java.version>
+		<java.version>1.8</java.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 		<org.apache.commons.collections4>4.4</org.apache.commons.collections4>
 		<io.springfox.version>3.0.0</io.springfox.version>

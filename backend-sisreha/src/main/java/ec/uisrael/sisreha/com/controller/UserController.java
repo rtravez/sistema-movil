@@ -50,7 +50,7 @@ public class UserController {
 		response = new HashMap<>();
 	}
 
-	@Secured({ "ROLE_ADMIN", "ROLE_USER" })
+	//@Secured({ "ROLE_ADMIN", "ROLE_USER" })
 	@GetMapping("/users")
 	public ResponseEntity<?> findAll() {
 		response = new HashMap<>();
@@ -71,7 +71,7 @@ public class UserController {
 		}
 	}
 
-	@Secured({ "ROLE_ADMIN" })
+	//@Secured({ "ROLE_ADMIN" })
 	@PostMapping("/users")
 	public ResponseEntity<?> create(@Valid @RequestBody UserDto userDto, BindingResult result) {
 		response = new HashMap<>();
@@ -98,7 +98,7 @@ public class UserController {
 		}
 	}
 
-	@Secured({ "ROLE_ADMIN" })
+	//@Secured({ "ROLE_ADMIN" })
 	@PutMapping("/user/{id}")
 	public ResponseEntity<?> update(@Valid @RequestBody UserDto userDto, BindingResult result, @PathVariable Long id) {
 		response = new HashMap<>();
@@ -135,7 +135,7 @@ public class UserController {
 		}
 	}
 
-	@Secured({ "ROLE_ADMIN" })
+	//@Secured({ "ROLE_ADMIN" })
 	@DeleteMapping("/user/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id) {
 		response = new HashMap<>();
